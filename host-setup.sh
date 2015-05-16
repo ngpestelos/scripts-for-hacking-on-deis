@@ -23,12 +23,11 @@ apt-get update && apt-get install -yq lxc-docker-1.5.0
 usermod -G docker "$SUDO_USER"
 
 # install virtualbox
-apt-get install -yq build-essential psmisc xvfb
-
-# install vagrant
-echo "deb http://download.virtualbox.org/virtualbox/debian '$(lsb_release -cs)' contrib non-free" > /etc/apt/sources.list.d/virtualbox.list
-wget -nv http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
-apt-get update && apt-get install -y virtualbox-4.3 dkms
+apt-get install -yq build-essential libgl1-mesa-glx libpython2.7 libqt4-network libqt4-opengl \
+	libqtcore4 libqtgui4 libsdl1.2debian libvpx1 libxcursor1 libxinerama1 libxmu6 psmisc
+wget -nv http://download.virtualbox.org/virtualbox/4.3.22/virtualbox-4.3_4.3.22-98236~Ubuntu~raring_amd64.deb
+dpkg -i virtualbox-4.3_4.3.22-98236~Ubuntu~raring_amd64.deb && \
+	    rm virtualbox-4.3_4.3.22-98236~Ubuntu~raring_amd64.deb
 
 # install vagrant
 wget -nv https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.2_x86_64.deb
